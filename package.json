@@ -20,7 +20,7 @@
   "scripts": {
     "test": "nodemon --exec mocha -R min",
     "dev": " nodemon ./src/index.js",
-    "start": "./src/index.js"
+    "start": "nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC"
