@@ -55,13 +55,12 @@ router.put('/put/client', (req, res) => {
   // first we find by id in DB
   async function s() {
     let FindClient = await clientFindById(client._id);
+    
     const clientToSave = Object.assign(FindClient, client);
     // now we edit
-    return editClient(clientToSave);
+    return editClient(clientToSave).then(() => res.send('edit successfuly'));
   }
   s();
-
-  res.send('edit successfuly');
 });
 
 // Find all

@@ -30,7 +30,7 @@ async function deleteClient(client) {
 // edit client
 async function editClient(client) {
   try {
-    debug(`client recived to edit and here its name: ${client.Name}`);
+    debug(`client recived to edit and here its new name: ${client.Name}`);
     debug('saving client...');
     await client.save();
     debug('done!');
