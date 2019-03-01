@@ -19,7 +19,8 @@
   },
   "scripts": {
     "test": "nodemon --exec mocha -R min",
-    "dev": " nodemon ./src/index.js"
+    "dev": " nodemon ./src/index.js",
+    "start": "./src/index.js"
   },
   "author": "",
   "license": "ISC"
