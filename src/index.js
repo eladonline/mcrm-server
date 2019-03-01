@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const clientRoutes = require('./routes/route_client');
 
-express.static('/');
+express.static('/public');
 
 if (app.get('env') === 'development') {
   debug('Enviroment: ' + process.env.NODE_ENV);
