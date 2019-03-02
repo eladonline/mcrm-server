@@ -1,5 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800);
-.darkText, .lightText, .ant-form-item-label label {
+.darkText, .lightText, .ant-form-item-label label, .default-table, body div {
   font-family: Assistant, sans-serif;
   font-weight: 400; }
 
@@ -27,31 +27,31 @@
       line-height: 24px;
       font-size: 18px; } }
 
-.alertMessage, .server-response-reject {
+.alertMessage, .server-response-reject, .server-response-accept {
   font-size: 16px;
   line-height: 18px; }
   @media (min-width: 992px) {
-    .alertMessage, .server-response-reject {
+    .alertMessage, .server-response-reject, .server-response-accept {
       font-size: 12px;
       line-height: 14px; } }
   @media (min-width: 1200px) {
-    .alertMessage, .server-response-reject {
+    .alertMessage, .server-response-reject, .server-response-accept {
       font-size: 14px;
       line-height: 16px; } }
   @media (min-width: 1600px) {
-    .alertMessage, .server-response-reject {
+    .alertMessage, .server-response-reject, .server-response-accept {
       font-size: 16px;
       line-height: 18px; } }
 
-.defaultTable {
+.default-table {
   font-size: 16px;
   line-height: 18px; }
   @media (min-width: 768px) {
-    .defaultTable {
+    .default-table {
       font-size: 18px;
       line-height: 19px; } }
   @media (min-width: 992px) {
-    .defaultTable {
+    .default-table {
       font-size: 20px;
       line-height: 21px; } }
 
@@ -172,7 +172,10 @@ button:disabled {
   font-weight: 800; }
 
 .server-response-reject {
-  color: coral; }
+  color: #ef534f; }
+
+.server-response-accept {
+  color: #20dd86; }
 
 .global-forms, #add-client-form,
 #remove-client-form,
@@ -194,14 +197,15 @@ button:disabled {
       grid-gap: 2em;
       justify-content: initial;
       align-items: initial;
-      grid-template-columns: repeat(4, auto);
+      grid-template-columns: repeat(4, 1fr);
       grid-template-rows: 100px;
       grid-template-areas: initial; } }
-  .global-forms .button-container, #add-client-form .button-container, #remove-client-form .button-container, #edit-client-form .button-container, #search-form .button-container {
-    grid-column: 1 / span 4; }
-    .global-forms .button-container button, #add-client-form .button-container button, #remove-client-form .button-container button, #edit-client-form .button-container button, #search-form .button-container button {
-      margin: auto;
-      width: 150px; }
+  @media (min-width: 992px) {
+    .global-forms .button-container, #add-client-form .button-container, #remove-client-form .button-container, #edit-client-form .button-container, #search-form .button-container {
+      grid-column: 1 / span 4; } }
+  .global-forms .button-container button, #add-client-form .button-container button, #remove-client-form .button-container button, #edit-client-form .button-container button, #search-form .button-container button {
+    margin: auto;
+    width: 150px; }
 
 .remove-client,
 .find-clients {
@@ -253,7 +257,7 @@ button:disabled {
     margin-bottom: 2em; }
 
 .ant-modal-header {
-  background: #141B80 !important; }
+  background: #141b80 !important; }
   .ant-modal-header .ant-modal-title {
     color: white; }
 
@@ -266,9 +270,9 @@ button:disabled {
   grid-template-rows: auto;
   grid-template-areas: initial;
   padding: 1em;
-  background: #141B80 !important; }
+  background: #141b80 !important; }
 
-.defaultTable {
+.default-table {
   position: relative;
   display: grid;
   grid-gap: 0em;
@@ -278,7 +282,7 @@ button:disabled {
   grid-template-rows: auto;
   grid-template-areas: initial; }
   @media (min-width: 992px) {
-    .defaultTable {
+    .default-table {
       display: grid;
       grid-gap: 0em;
       justify-content: initial;
@@ -286,7 +290,7 @@ button:disabled {
       grid-template-columns: auto;
       grid-template-rows: auto;
       grid-template-areas: initial; } }
-  .defaultTable tr {
+  .default-table tr {
     display: grid;
     grid-gap: 0em;
     justify-content: initial;
@@ -295,7 +299,7 @@ button:disabled {
     grid-template-rows: auto;
     grid-template-areas: initial; }
     @media (min-width: 992px) {
-      .defaultTable tr {
+      .default-table tr:not(.full-row) {
         display: grid;
         grid-gap: 0em;
         justify-content: initial;
@@ -303,15 +307,57 @@ button:disabled {
         grid-template-columns: repeat(4, 25%);
         grid-template-rows: auto;
         grid-template-areas: initial; } }
-  .defaultTable th {
-    color: gray;
-    background: #221a1a;
-    border: 1px solid #323232; }
-  .defaultTable td {
-    padding: 0.2em;
-    border: 1px solid #323232;
-    background: white;
-    color: #323232; }
+    .default-table tr.full-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      display: grid;
+      grid-gap: 0em;
+      justify-content: initial;
+      align-items: initial;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: initial; }
+    .default-table tr th {
+      padding: 0.3em 0.2em;
+      color: gray;
+      background: #221a1a;
+      border: 1px solid #323232; }
+    .default-table tr td {
+      padding: 0.2em;
+      border: 1px solid #323232;
+      background: white;
+      color: #323232; }
+
+.table-container {
+  display: grid;
+  grid-gap: 1em;
+  justify-content: initial;
+  align-items: initial;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: initial; }
+  .table-container .overlay {
+    transition: 0.3s ease;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    .table-container .overlay:hover {
+      opacity: 1;
+      background: rgba(10, 10, 10, 0.9); }
+    .table-container .overlay span:hover {
+      transform: scale(1.2);
+      transition: 0.25s ease;
+      color: #ef534f; }
 
 body {
   background-color: #092056 !important; }
@@ -344,7 +390,7 @@ body {
     min-height: 100vh; } }
 
 .ant-menu-root .ant-menu-item-group-title {
-  color: #c6c6c6 !important; }
+  color: #c6c6c6; }
 
 .ant-menu-root .ant-menu-submenu-title span {
   font-size: 20px;

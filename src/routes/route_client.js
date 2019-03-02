@@ -26,9 +26,11 @@ router.use((req, res, next) => {
 router.post('/add', (req, res) => {
   console.log(req.body.data);
   const { data } = req.body;
-
-  addClient(data);
-  res.status(200).send({ success: true, error: null });
+  async function s() {
+    const addClientStatus = await addClient(data);
+    res.status(200).send(addClientStatus);
+  }
+  s();
 });
 
 // DELETE
@@ -55,7 +57,7 @@ router.put('/put/client', (req, res) => {
   // first we find by id in DB
   async function s() {
     let FindClient = await clientFindById(client._id);
-    
+
     const clientToSave = Object.assign(FindClient, client);
     // now we edit
     return editClient(clientToSave).then(() => res.send('edit successfuly'));

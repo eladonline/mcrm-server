@@ -1,10 +1,11 @@
 const Client = require('../schema/schema_client');
 const debug = require('debug')('app:clientFind');
+const Purchases = require('../schema/schema_purchase');
 
 async function clientFindByParam(param) {
   try {
     debug(`finding all client...`);
-    const client = await Client.find(param);
+    const client = await Client.find(param).populate('purchases');
     if (client.length) {
       debug(`clients found...`);
       return client;
@@ -20,8 +21,8 @@ async function clientFindByParam(param) {
 async function clientFindOneByParam(param) {
   try {
     debug(`finding one client...`);
-    const client = await Client.findOne(param);
-    debug(`client found... here is the name: ${client.Name}`);
+    const client = await Client.findOne(param).populate('purchases');
+    debug(`client found... here is the name: ${client.name}`);
     return client;
   } catch (error) {
     return new Error(`error in clientFindOneByParam: ${error}`);
@@ -30,7 +31,7 @@ async function clientFindOneByParam(param) {
 async function clientFindById(id) {
   try {
     debug(`finding by id client...`);
-    const client = await Client.findById(id);
+    const client = await Client.findById(id).populate('purchases');
     debug(`client found... here is the name: ${client.Name}`);
     return client;
   } catch (error) {
